@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Controlador de Viagens" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/Controlador de Viagens" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/Controlador de Viagens" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="Cidade.cpp" />
+		<Unit filename="Cidade.h" />
+		<Unit filename="ControladorDeTransito.cpp" />
+		<Unit filename="ControladorDeTransito.h" />
+		<Unit filename="Passageiro.cpp" />
+		<Unit filename="Passageiro.h" />
+		<Unit filename="Trajeto.cpp" />
+		<Unit filename="Trajeto.h" />
+		<Unit filename="Transporte.cpp" />
+		<Unit filename="Transporte.h" />
+		<Unit filename="Viagem.cpp" />
+		<Unit filename="Viagem.h" />
+		<Unit filename="main.cpp" />
+		<Extensions />
+	</Project>
+</CodeBlocks_project_file>
