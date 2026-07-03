@@ -68,11 +68,11 @@ Passageiro* ControladorDeTransito::buscarPassageiro(const std::string& nome) con
 
 bool ControladorDeTransito::cadastrarCidade(const std::string& nome) {
     if (nome.empty()) {
-        std::cout << "Erro: o nome da cidade não pode ser vazio.\n";
+        std::cout << "Erro: o nome da cidade nao pode ser vazio.\n";
         return false;
     }
     if (buscarCidade(nome) != nullptr) {
-        std::cout << "Erro: já existe uma cidade chamada \"" << nome << "\".\n";
+        std::cout << "Erro: ja existe uma cidade chamada \"" << nome << "\".\n";
         return false;
     }
     cidades.push_back(new Cidade(nome));
@@ -86,29 +86,29 @@ bool ControladorDeTransito::cadastrarTrajeto(const std::string& nomeOrigem, cons
     Cidade* destino = buscarCidade(nomeDestino);
 
     if (origem == nullptr) {
-        std::cout << "Erro: a cidade de origem \"" << nomeOrigem << "\" não está cadastrada.\n";
+        std::cout << "Erro: a cidade de origem \"" << nomeOrigem << "\" nao esta cadastrada.\n";
         return false;
     }
     if (destino == nullptr) {
-        std::cout << "Erro: a cidade de destino \"" << nomeDestino << "\" não está cadastrada.\n";
+        std::cout << "Erro: a cidade de destino \"" << nomeDestino << "\" nao esta cadastrada.\n";
         return false;
     }
     if (origem == destino) {
-        std::cout << "Erro: a origem e o destino de um trajeto não podem ser a mesma cidade.\n";
+        std::cout << "Erro: a origem e o destino de um trajeto nao podem ser a mesma cidade.\n";
         return false;
     }
     if (tipo != 'A' && tipo != 'T') {
-        std::cout << "Erro: tipo de trajeto inválido (use 'A' para Aquático ou 'T' para Terrestre).\n";
+        std::cout << "Erro: tipo de trajeto invalido (use 'A' para Aquatico ou 'T' para Terrestre).\n";
         return false;
     }
     if (distancia <= 0) {
-        std::cout << "Erro: a distância do trajeto deve ser maior que zero.\n";
+        std::cout << "Erro: a distancia do trajeto deve ser maior que zero.\n";
         return false;
     }
 
     trajetos.push_back(new Trajeto(origem, destino, tipo, distancia));
     std::cout << "Trajeto " << nomeOrigem << " -> " << nomeDestino
-               << " (" << (tipo == 'A' ? "Aquático" : "Terrestre") << ", " << distancia
+               << " (" << (tipo == 'A' ? "Aquatico" : "Terrestre") << ", " << distancia
                << " km) cadastrado com sucesso.\n";
     return true;
 }
@@ -117,20 +117,20 @@ bool ControladorDeTransito::cadastrarTransporte(const std::string& nome, char ti
                                                  int velocidade, int distanciaEntreDescansos,
                                                  int tempoDeDescanso, const std::string& localAtual) {
     if (nome.empty()) {
-        std::cout << "Erro: o nome do transporte não pode ser vazio.\n";
+        std::cout << "Erro: o nome do transporte nao pode ser vazio.\n";
         return false;
     }
     if (buscarTransporte(nome) != nullptr) {
-        std::cout << "Erro: já existe um transporte chamado \"" << nome << "\".\n";
+        std::cout << "Erro: ja existe um transporte chamado \"" << nome << "\".\n";
         return false;
     }
     Cidade* local = buscarCidade(localAtual);
     if (local == nullptr) {
-        std::cout << "Erro: a cidade \"" << localAtual << "\" não está cadastrada.\n";
+        std::cout << "Erro: a cidade \"" << localAtual << "\" nao esta cadastrada.\n";
         return false;
     }
     if (tipo != 'A' && tipo != 'T') {
-        std::cout << "Erro: tipo de transporte inválido (use 'A' para Aquático ou 'T' para Terrestre).\n";
+        std::cout << "Erro: tipo de transporte invalido (use 'A' para Aquatico ou 'T' para Terrestre).\n";
         return false;
     }
     if (capacidade <= 0) {
@@ -142,29 +142,29 @@ bool ControladorDeTransito::cadastrarTransporte(const std::string& nome, char ti
         return false;
     }
     if (distanciaEntreDescansos < 0 || tempoDeDescanso < 0) {
-        std::cout << "Erro: distância entre descansos e tempo de descanso não podem ser negativos.\n";
+        std::cout << "Erro: distancia entre descansos e tempo de descanso nao podem ser negativos.\n";
         return false;
     }
 
     transportes.push_back(new Transporte(nome, tipo, capacidade, velocidade,
                                           distanciaEntreDescansos, tempoDeDescanso, local));
-    std::cout << "Transporte \"" << nome << "\" (" << (tipo == 'A' ? "Aquático" : "Terrestre")
+    std::cout << "Transporte \"" << nome << "\" (" << (tipo == 'A' ? "Aquatico" : "Terrestre")
                << ") cadastrado com sucesso em " << localAtual << ".\n";
     return true;
 }
 
 bool ControladorDeTransito::cadastrarPassageiro(const std::string& nome, const std::string& localAtual) {
     if (nome.empty()) {
-        std::cout << "Erro: o nome do passageiro não pode ser vazio.\n";
+        std::cout << "Erro: o nome do passageiro nao pode ser vazio.\n";
         return false;
     }
     if (buscarPassageiro(nome) != nullptr) {
-        std::cout << "Erro: já existe um passageiro chamado \"" << nome << "\".\n";
+        std::cout << "Erro: ja existe um passageiro chamado \"" << nome << "\".\n";
         return false;
     }
     Cidade* local = buscarCidade(localAtual);
     if (local == nullptr) {
-        std::cout << "Erro: a cidade \"" << localAtual << "\" não está cadastrada.\n";
+        std::cout << "Erro: a cidade \"" << localAtual << "\" nao esta cadastrada.\n";
         return false;
     }
 
@@ -295,15 +295,15 @@ bool ControladorDeTransito::resolverPassageiros(const std::vector<std::string>& 
     for (const std::string& nome : nomes) {
         Passageiro* p = buscarPassageiro(nome);
         if (p == nullptr) {
-            erro = "o passageiro \"" + nome + "\" não está cadastrado.";
+            erro = "o passageiro \"" + nome + "\" nao esta cadastrado.";
             return false;
         }
         if (!p->estaDisponivel()) {
-            erro = "o passageiro \"" + nome + "\" já está em outra viagem.";
+            erro = "o passageiro \"" + nome + "\" ja esta em outra viagem.";
             return false;
         }
         if (p->getLocalAtual() != origem) {
-            erro = "o passageiro \"" + nome + "\" não está na cidade de origem (" + origem->getNome() + ").";
+            erro = "o passageiro \"" + nome + "\" nao está na cidade de origem (" + origem->getNome() + ").";
             return false;
         }
         out.push_back(p);
@@ -320,31 +320,31 @@ bool ControladorDeTransito::iniciarViagem(const std::string& nomeTransporte,
     Cidade* origem = buscarCidade(nomeOrigem);
     Cidade* destino = buscarCidade(nomeDestino);
     if (origem == nullptr) {
-        std::cout << "Erro: a cidade de origem \"" << nomeOrigem << "\" não está cadastrada.\n";
+        std::cout << "Erro: a cidade de origem \"" << nomeOrigem << "\" nao esta cadastrada.\n";
         return false;
     }
     if (destino == nullptr) {
-        std::cout << "Erro: a cidade de destino \"" << nomeDestino << "\" não está cadastrada.\n";
+        std::cout << "Erro: a cidade de destino \"" << nomeDestino << "\" nao esta cadastrada.\n";
         return false;
     }
     if (origem == destino) {
-        std::cout << "Erro: a origem e o destino da viagem não podem ser a mesma cidade.\n";
+        std::cout << "Erro: a origem e o destino da viagem nao podem ser a mesma cidade.\n";
         return false;
     }
 
     // ---- 2. Validação do transporte ----
     Transporte* transporte = buscarTransporte(nomeTransporte);
     if (transporte == nullptr) {
-        std::cout << "Erro: o transporte \"" << nomeTransporte << "\" não está cadastrado.\n";
+        std::cout << "Erro: o transporte \"" << nomeTransporte << "\" nao esta cadastrado.\n";
         return false;
     }
     if (!transporte->estaDisponivel()) {
-        std::cout << "Erro: o transporte \"" << nomeTransporte << "\" já está em outra viagem.\n";
+        std::cout << "Erro: o transporte \"" << nomeTransporte << "\" ja esta em outra viagem.\n";
         return false;
     }
     if (transporte->getLocalAtual() != origem) {
-        std::cout << "Erro: o transporte \"" << nomeTransporte << "\" não está na cidade de origem ("
-                   << nomeOrigem << "). Ele está atualmente em "
+        std::cout << "Erro: o transporte \"" << nomeTransporte << "\" nao esta na cidade de origem ("
+                   << nomeOrigem << "). Ele esta atualmente em "
                    << transporte->getLocalAtual()->getNome() << ".\n";
         return false;
     }
@@ -366,8 +366,8 @@ bool ControladorDeTransito::iniciarViagem(const std::string& nomeTransporte,
     // ---- 4. Cálculo do melhor caminho (direto ou com conexão) ----
     std::vector<Trajeto*> caminho = calcularMelhorTrajeto(origem, destino, transporte->getTipo());
     if (caminho.empty()) {
-        std::cout << "Erro: não existe nenhum trajeto (direto ou com conexão através de cidades "
-                   << "intermediárias) compatível com o tipo do transporte \"" << nomeTransporte
+        std::cout << "Erro: nao existe nenhum trajeto (direto ou com conexão atraves de cidades "
+                   << "intermediarias) compativel com o tipo do transporte \"" << nomeTransporte
                    << "\" entre " << nomeOrigem << " e " << nomeDestino << ".\n";
         return false;
     }
@@ -402,7 +402,7 @@ bool ControladorDeTransito::iniciarViagem(const std::string& nomeTransporte,
                    << " usando \"" << nomeTransporte << "\" (" << caminho[0]->getDistancia()
                    << " km, trajeto direto).\n";
     } else {
-        std::cout << "Viagem com conexão iniciada (" << novosTrechos.size() << " trechos): "
+        std::cout << "Viagem com conexao iniciada (" << novosTrechos.size() << " trechos): "
                    << nomeOrigem;
         for (Trajeto* tj : caminho) {
             std::cout << " -> " << tj->getDestino()->getNome();
@@ -440,7 +440,7 @@ void ControladorDeTransito::finalizarCadeia(Viagem* ultimoTrecho) {
 
 void ControladorDeTransito::avancarHoras(int horas) {
     if (horas <= 0) {
-        std::cout << "Erro: o número de horas a avançar deve ser maior que zero.\n";
+        std::cout << "Erro: o numero de horas a avançar deve ser maior que zero.\n";
         return;
     }
 
@@ -475,8 +475,8 @@ void ControladorDeTransito::avancarHoras(int horas) {
                     // anterior já "gastou" a hora atual chegando ao seu
                     // próprio destino).
                     proxima->iniciarViagem();
-                    std::cout << "Trecho concluído (" << v->getOrigem()->getNome() << " -> "
-                               << v->getDestino()->getNome() << "). Iniciando o próximo trecho: "
+                    std::cout << "Trecho concluido (" << v->getOrigem()->getNome() << " -> "
+                               << v->getDestino()->getNome() << "). Iniciando o proximo trecho: "
                                << proxima->getOrigem()->getNome() << " -> "
                                << proxima->getDestino()->getNome() << ".\n";
                 }
@@ -484,13 +484,13 @@ void ControladorDeTransito::avancarHoras(int horas) {
         }
     }
 
-    std::cout << horas << " hora(s) avançada(s) com sucesso. Estado do sistema atualizado.\n";
+    std::cout << horas << " hora(s) avancada(s) com sucesso. Estado do sistema atualizado.\n";
 }
 
 // Relatórios / consultas
 
 void ControladorDeTransito::relatarPosicaoPassageiros() const {
-    std::cout << "\n=== Posição dos Passageiros ===\n";
+    std::cout << "\n=== Posicao dos Passageiros ===\n";
     if (passageiros.empty()) {
         std::cout << "Nenhum passageiro cadastrado.\n";
         return;
@@ -506,7 +506,7 @@ void ControladorDeTransito::relatarPosicaoPassageiros() const {
             // destino finais solicitados pelo usuário), o transporte usado
             // e, como informação extra, qual é o trecho específico sendo
             // percorrido agora (relevante em viagens com conexão).
-            std::cout << "em trânsito de " << v->getOrigemGeral()->getNome() << " para "
+            std::cout << "em transito de " << v->getOrigemGeral()->getNome() << " para "
                        << v->getDestinoGeral()->getNome() << ", usando \"" << v->getTransporte()->getNome()
                        << "\" (trecho atual: " << v->getOrigem()->getNome() << " -> "
                        << v->getDestino()->getNome() << ").\n";
@@ -515,7 +515,7 @@ void ControladorDeTransito::relatarPosicaoPassageiros() const {
 }
 
 void ControladorDeTransito::relatarPosicaoTransportes() const {
-    std::cout << "\n=== Posição dos Transportes ===\n";
+    std::cout << "\n=== Posicao dos Transportes ===\n";
     if (transportes.empty()) {
         std::cout << "Nenhum transporte cadastrado.\n";
         return;
@@ -526,7 +526,7 @@ void ControladorDeTransito::relatarPosicaoTransportes() const {
         if (v == nullptr) {
             std::cout << "na cidade " << t->getLocalAtual()->getNome() << ".\n";
         } else {
-            std::cout << "em trânsito de " << v->getOrigemGeral()->getNome() << " para "
+            std::cout << "em transito de " << v->getOrigemGeral()->getNome() << " para "
                        << v->getDestinoGeral()->getNome() << " (trecho atual: "
                        << v->getOrigem()->getNome() << " -> " << v->getDestino()->getNome() << ").\n";
         }
@@ -586,7 +586,7 @@ void ControladorDeTransito::relatarTrajetos() const {
     }
     for (Trajeto* t : trajetos) {
         std::cout << "- " << t->getOrigem()->getNome() << " -> " << t->getDestino()->getNome()
-                   << " [" << (t->getTipo() == 'A' ? "Aquático" : "Terrestre") << "] "
+                   << " [" << (t->getTipo() == 'A' ? "Aquatico" : "Terrestre") << "] "
                    << t->getDistancia() << " km\n";
     }
 }
