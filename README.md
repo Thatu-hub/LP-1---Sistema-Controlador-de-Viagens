@@ -44,8 +44,6 @@ main.cpp Cidade.cpp Trajeto.cpp Transporte.cpp Passageiro.cpp Viagem.cpp Control
 
 ## **Como executar**
 
-./viagens
-
 Ao iniciar, o sistema tenta carregar automaticamente os dados da pasta "dados".  
 Se a pasta não existir, o sistema inicia vazio.
 
